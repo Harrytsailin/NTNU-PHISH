@@ -10,25 +10,29 @@ NTNU-Phish 是一套用於**資安研究與釣魚警覺性訓練**的模擬系�
 
 ```text
 .
-├── pre_survey/
+├── Dataset Files/
+│   ├── introduction.txt
+│   ├── post_survey.csv
+│   └── pre_survey.csv
+│
+├── apps_script/
+│   ├── post_survey.gs
 │   └── pre_survey.gs
-├── post_survey/
-│   └── post_survey.gs
-├── backend/
+│
+├── gophish/
+│   ├── config.json
 │   └── proxy.py
-├── data/
-│   ├── pre_survey.csv
-│   └── post_survey.csv
+│
 └── README.md
 ```
 
 各目錄用途如下：
 
-- `pre_survey/`：前測、實驗條件分配、模擬流程啟動與互動紀錄接收。
-- `post_survey/`：後測資料處理與個人化教育回饋產生。
-- `backend/`：Apps Script 與 GoPhish Admin API 之間的後端服務。
-- `data/`：Study 2 的去識別化前測與後測資料。
-- Cloud Run 頁面擷取服務為獨立部署元件，主要使用 Playwright 取得目標登入頁面的截圖與 DOM Tree。
+- `Dataset Files/`：存放 Study 2 的去識別化前測與後測資料，以及資料集說明文件。
+- `apps_script/`：存放前測與後測的 Google Apps Script 程式碼。`pre_survey.gs` 負責前測、實驗條件分配、模擬流程啟動與互動紀錄接收；`post_survey.gs` 負責後測資料處理與個人化資安教育回饋產生。
+- `gophish/`：存放 GoPhish 相關設定與後端服務。`config.json` 為 GoPhish 伺服器設定檔；`proxy.py` 負責在 Google Apps Script 與 GoPhish Admin API 之間轉送請求。
+- `README.md`：說明整體系統架構、資料流程、部署方式與公開資料內容。
+- Cloud Run 頁面擷取服務為獨立部署元件，主要使用 Playwright 取得目標登入頁面的截圖與 DOM Tree，因此未包含於本 repository 的目錄結構中。
 
 ---
 
